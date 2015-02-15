@@ -28,6 +28,11 @@ module.exports = function(config) {
       'bower_components/angular-route/angular-route.js',
       'bower_components/angular-sanitize/angular-sanitize.js',
       'bower_components/angular-touch/angular-touch.js',
+      'bower_components/gsap/src/uncompressed/TweenMax.js',
+      'bower_components/fastclick/lib/fastclick.js',
+      'bower_components/ng-fastclick/index.min.js',
+      'bower_components/snapjs/snap.js',
+      'bower_components/angular-snap/angular-snap.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

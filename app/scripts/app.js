@@ -8,16 +8,18 @@
  *
  * Main module of the application.
  */
-angular
-  .module('daverastApp', [
+var app = angular.module('daverastApp', [
     'ngAnimate',
     'ngCookies',
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'ngTouch'
-  ])
-  .config(function ($routeProvider) {
+    'ngTouch',
+    'ng-fastclick',
+    'snap'
+  ]);
+
+  app.config(function ($routeProvider) {
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
@@ -27,7 +29,82 @@ angular
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl'
       })
+      .when('/newPage', {
+        templateUrl: 'views/newpage.html',
+        controller: 'NewpageCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
   });
+
+  /*
+  **
+  * globally available filter for trusted urls
+  * usage: ng-src="{{ track.url | trustUrl }}"
+  *
+  */
+  app.filter('trustUrl', function ($sce) {
+    return function(url) {
+      return $sce.trustAsResourceUrl(url);
+    };
+  });
+
+  /*
+  preload all templates defined in module routes
+  http://stackoverflow.com/a/21601939
+  */
+  app.run(function ($templateCache, $route, $http) {
+      var url;
+      for(var i in $route.routes)
+      {
+        if (url = $route.routes[i].templateUrl)
+        {
+          $http.get(url, {cache: $templateCache});
+        }
+      }
+  });
+
+  // https://docs.angularjs.org/api/ngAnimate
+  app.animation('.page', function() {
+    return {
+      enter: function(element, done) {
+      //run the animation here and call done when the animation is complete
+      TweenMax.to(element, 0, {autoAlpha: 0, y:20, overwrite:false});
+      TweenMax.to(element, 0.5, {autoAlpha: 1, y:0, delay:.25, overwrite:false});
+
+      return function(cancelled) {
+      //this (optional) function will be called when the animation
+      //completes or when the animation is cancelled (the cancelled
+      //flag will be set to true if cancelled).
+      };
+    },
+    leave: function(element, done) {
+      TweenMax.to(element, 0.75, {autoAlpha: 0,x:0, y:20, overwrite:false, display:'none'});
+    },
+    move: function(element, done) { },
+      //animation that can be triggered before the class is added
+      beforeAddClass: function(element, className, done) {},
+
+      //animation that can be triggered after the class is added
+      addClass: function(element, className, done) {},
+
+      //animation that can be triggered before the class is removed
+      beforeRemoveClass: function(element, className, done) { },
+
+      //animation that can be triggered after the class is removed
+      removeClass: function(element, className, done) { }
+    };
+  });
+
+/*
+///////////////////////////////////////////
+//// UTILITY STUFF ////////////////////////
+///////////////////////////////////////////
+*/
+
+// open new pages in home screen web app on iOS, not in mobile safari
+(function(a,b,c){if(c in b&&b[c]){var d,e=a.location,f=/^(a|html)$/i;a.addEventListener("click",function(a){d=a.target;while(!f.test(d.nodeName))d=d.parentNode;"href"in d&&(d.href.indexOf("http")||~d.href.indexOf(e.host))&&(a.preventDefault(),e.href=d.href)},!1)}})(document,window.navigator,"standalone")
+
+// allow CSS :active styles to fire on touch events
+document.addEventListener("touchstart", function(){}, true);

@@ -4,11 +4,18 @@
     <meta charset="utf-8">
     <title></title>
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+    <!-- this meta tag removes the mobile safari chrome from a site added to the home screen -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <!-- set title for iOS homescreen webapp -->
+    <meta name="apple-mobile-web-app-title" content="Dave Rast">
+    <!-- Always force latest IE rendering engine or request Chrome Frame -->
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/angular-snap/angular-snap.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
@@ -20,43 +27,32 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <!-- Add your site or application content here -->
-    <div class="header">
-      <div class="navbar navbar-default" role="navigation">
+    <!-- mobile flyout menu -->
+    <snap-drawer id="flyoutMenu">
+      <ul>
+        <li><a ng-href="#/home" snap-toggle="left">Home</a></li>
+        <li><a ng-href="#/about" snap-toggle="left">About</a></li>
+        <li><a ng-href="#/newPage" snap-toggle="left">New Page</a></li>
+      </ul>
+    </snap-drawer>
+
+    <div snap-content id="mainContentWrapper">
+
+      <snap-dragger>
+        <button snap-toggle="left" id="toggleSnapButton">&#9776;</button>
+      </snap-dragger>
+      
+      <header>
+
         <div class="container">
-          <div class="navbar-header">
-
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-
-            <a class="navbar-brand" href="#/">daverast</a>
-          </div>
-
-          <div class="collapse navbar-collapse" id="js-navbar-collapse">
-
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="#/">Home</a></li>
-              <li><a ng-href="#/about">About</a></li>
-              <li><a ng-href="#/">Contact</a></li>
-            </ul>
-          </div>
+          <h2>Dave Rast</h2>
+          <h4>Sound Design</h4>
         </div>
-      </div>
-    </div>
+      </header>
 
-    <div class="container">
-    <div ng-view=""></div>
-    </div>
+      <div ng-view="" class="page"></div>
 
-    <div class="footer">
-      <div class="container">
-        <p><span class="glyphicon glyphicon-heart"></span> from the Yeoman team</p>
-      </div>
-    </div>
+    </div><!-- ./snap-content -->
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
@@ -81,6 +77,11 @@
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/gsap/src/uncompressed/TweenMax.js"></script>
+    <script src="bower_components/fastclick/lib/fastclick.js"></script>
+    <script src="bower_components/ng-fastclick/index.min.js"></script>
+    <script src="bower_components/snapjs/snap.js"></script>
+    <script src="bower_components/angular-snap/angular-snap.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -88,6 +89,7 @@
         <script src="scripts/app.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <script src="scripts/controllers/about.js"></script>
+        <script src="scripts/controllers/newpage.js"></script>
         <!-- endbuild -->
 </body>
 </html>
