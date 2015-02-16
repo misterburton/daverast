@@ -59,6 +59,18 @@ app.config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
   cfpLoadingBarProvider.includeSpinner = true;
 }]);
 
+// listen for load bar 'loaded' event & fade in site
+app.run(function($rootScope) {
+  $rootScope.$on(
+    "cfpLoadingBar:loaded",
+    function fadeInPage() {
+      TweenMax.to($('body'), .5, {
+        autoAlpha: 1
+      });
+    }
+  );
+});
+
 /*
  **
  * globally available filter for trusted urls
@@ -69,18 +81,6 @@ app.filter('trustUrl', function($sce) {
   return function(url) {
     return $sce.trustAsResourceUrl(url);
   };
-});
-
-// fade in site
-app.run(function($rootScope) {
-  $rootScope.$on(
-    "cfpLoadingBar:loaded",
-    function fadeInPage() {
-      TweenMax.to($('body'), .5, {
-        autoAlpha: 1
-      })
-    }
-  );
 });
 
 /*
@@ -177,7 +177,7 @@ function randomColors() {
   textColor = $.xcolor.lighten(textColor, 2);
 
   // rollover color
-  var darkerText = $.xcolor.darken(bgColor, 3);
+  var darkerText = $.xcolor.darken(bgColor, 1);
 
   // header
   $("#titleContainer h2").css('color', textColor);
@@ -188,9 +188,6 @@ function randomColors() {
   $("#toggleSnapButton").css('color', textColor);
   // desktop nav
   $("#desktopNavContainer li a").css('color', bgColor);
-  $("#desktopNavContainer li a:hover").css('color', darkerText);
-  $("#desktopNavContainer li a:active").css('color', darkerText);
-  $("#desktopNavContainer li a:visited").css('color', darkerText);
   $("#desktopNav").css('background-color', textColor);
   // flyout menu
   $("#flyoutMenu li a").css('color', bgColor);
@@ -198,16 +195,18 @@ function randomColors() {
   $("#flyoutMenu li a:active").css('color', darkerText);
   $("#flyoutMenu li a:visited").css('color', darkerText);
   $("#flyoutMenu").css('background-color', textColor);
+  // global page links
+  $("a").css('color', bgColor);
 
-  $(".navLink").mouseover(function() {
+  $(".navLink, a").mouseover(function() {
     $(this).css("color", darkerText)
   });
 
-  $(".navLink").mouseout(function() {
+  $(".navLink, a").mouseout(function() {
     $(this).css("color", bgColor)
   });
 
-  $(".navLink").click(function() {
+  $(".navLink, a").click(function() {
     $(this).css("color", darkerText)
   });
 }

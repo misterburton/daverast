@@ -9,7 +9,11 @@ body {
 
 a, a:hover, a:active {
   text-decoration: none;
-
+  -webkit-transition: color .25s ease-out;
+     -moz-transition: color .25s ease-out;
+      -ms-transition: color .25s ease-out;
+       -o-transition: color .25s ease-out;
+          transition: color .25s ease-out;
 }
 
 img {
@@ -40,6 +44,14 @@ img {
   -webkit-user-select: none;
   -ms-user-select: none;                 /* prevent copy paste, to allow, change 'none' to 'text' */
 }
+
+#loading-bar-spinner {
+  right: 10px;
+}
+
+//////////////////////////////////////
+/////////// TITLE & HEADER ///////////
+//////////////////////////////////////
 
 header {
   background-color: #000;
