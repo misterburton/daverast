@@ -129,11 +129,25 @@ function randomColors() {
     textColor = (i % 2 == 0) ? $.xcolor.darken(bgColor, colorSteps) : $.xcolor.lighten(bgColor, colorSteps);
   }
 
-  // universal color changes
+  // header
   $("#titleContainer h2").css('color', textColor);
   $("#titleContainer h4").css('color', textColor);
   $("header").css('background-color', bgColor);
-  console.log('random colors! ', textColor, bgColor);
+  // hamburger menu
+  $("#toggleSnapButton").css('background-color', bgColor);
+  $("#toggleSnapButton").css('color', textColor);
+  // desktop nav
+  $("#desktopNavContainer li a").css('color', bgColor);
+  $("#desktopNavContainer li a:hover").css('color', $.xcolor.darken(bgColor));
+  $("#desktopNavContainer li a:active").css('color', $.xcolor.darken(bgColor));
+  $("#desktopNavContainer li a:visited").css('color', $.xcolor.darken(bgColor));
+  $("#desktopNav").css('background-color', textColor);
+  // flyout menu
+  $("#flyoutMenu li a").css('color', bgColor);
+  $("#flyoutMenu li a:hover").css('color', $.xcolor.darken(bgColor));
+  $("#flyoutMenu li a:active").css('color', $.xcolor.darken(bgColor));
+  $("#flyoutMenu li a:visited").css('color', $.xcolor.darken(bgColor));
+  $("#flyoutMenu").css('background-color', textColor);
 }
 
 /*

@@ -45,11 +45,11 @@ header {
 }
 
 header, header * {
-  -webkit-transition: all .5s ease-out;
-     -moz-transition: all .5s ease-out;
-      -ms-transition: all .5s ease-out;
-       -o-transition: all .5s ease-out;
-          transition: all .5s ease-out;
+  -webkit-transition: background-color .5s ease-out;
+     -moz-transition: background-color .5s ease-out;
+      -ms-transition: background-color .5s ease-out;
+       -o-transition: background-color .5s ease-out;
+          transition: background-color .5s ease-out;
 }
 
 #titleContainer {
@@ -74,6 +74,11 @@ ul {
   background-color: #666;
   padding: 9px 4px 4px 4px;
   display: none;
+  -webkit-transition: background-color .5s ease-out;
+     -moz-transition: background-color .5s ease-out;
+      -ms-transition: background-color .5s ease-out;
+       -o-transition: background-color .5s ease-out;
+          transition: background-color .5s ease-out;
 }
 
 #desktopNav ul {
@@ -88,6 +93,16 @@ ul {
 
 #desktopNav ul li a {
   text-decoration: none;
+  color: #CCC;
+  -webkit-transition: color .5s ease-out;
+     -moz-transition: color .5s ease-out;
+      -ms-transition: color .5s ease-out;
+       -o-transition: color .5s ease-out;
+          transition: color .5s ease-out;
+}
+
+#desktopNav ul li a:hover, #desktopNav ul li a:active, #desktopNav ul li a:visited {
+  color: #EEE;
 }
 
 ///////////////////////////////////
@@ -108,6 +123,11 @@ ul {
 #flyoutMenu ul li a {
   text-decoration: none;
   color: #AAA;
+  -webkit-transition: all .5s ease-out;
+     -moz-transition: all .5s ease-out;
+      -ms-transition: all .5s ease-out;
+       -o-transition: all .5s ease-out;
+          transition: all .5s ease-out;
 }
 
 #flyoutMenu ul li a:hover, ul li a:active {
@@ -122,6 +142,11 @@ ul {
   background-color: #333;
   color: #FFF;
   display: inline;
+  -webkit-transition: all .5s ease-out;
+     -moz-transition: all .5s ease-out;
+      -ms-transition: all .5s ease-out;
+       -o-transition: all .5s ease-out;
+          transition: all .5s ease-out;
 }
 
 #toggleSnapButton {
@@ -135,6 +160,11 @@ ul {
   font-weight: normal;
   border-radius: 4px;
   display: inline;
+  -webkit-transition: all .5s ease-out;
+     -moz-transition: all .5s ease-out;
+      -ms-transition: all .5s ease-out;
+       -o-transition: all .5s ease-out;
+          transition: all .5s ease-out;
 }
 
 ///////////////////////////////////////
