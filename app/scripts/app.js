@@ -129,6 +129,8 @@ function randomColors() {
     textColor = (i % 2 == 0) ? $.xcolor.darken(bgColor, colorSteps) : $.xcolor.lighten(bgColor, colorSteps);
   }
 
+  var darkerText = $.xcolor.darken(bgColor, 4);
+
   // header
   $("#titleContainer h2").css('color', textColor);
   $("#titleContainer h4").css('color', textColor);
@@ -138,16 +140,28 @@ function randomColors() {
   $("#toggleSnapButton").css('color', textColor);
   // desktop nav
   $("#desktopNavContainer li a").css('color', bgColor);
-  $("#desktopNavContainer li a:hover").css('color', $.xcolor.darken(bgColor));
-  $("#desktopNavContainer li a:active").css('color', $.xcolor.darken(bgColor));
-  $("#desktopNavContainer li a:visited").css('color', $.xcolor.darken(bgColor));
+  $("#desktopNavContainer li a:hover").css('color', darkerText);
+  $("#desktopNavContainer li a:active").css('color', darkerText);
+  $("#desktopNavContainer li a:visited").css('color', darkerText);
   $("#desktopNav").css('background-color', textColor);
   // flyout menu
   $("#flyoutMenu li a").css('color', bgColor);
-  $("#flyoutMenu li a:hover").css('color', $.xcolor.darken(bgColor));
-  $("#flyoutMenu li a:active").css('color', $.xcolor.darken(bgColor));
-  $("#flyoutMenu li a:visited").css('color', $.xcolor.darken(bgColor));
+  $("#flyoutMenu li a:hover").css('color', darkerText);
+  $("#flyoutMenu li a:active").css('color', darkerText);
+  $("#flyoutMenu li a:visited").css('color', darkerText);
   $("#flyoutMenu").css('background-color', textColor);
+
+  $(".navLink").mouseover(function() {
+    $(this).css("color", darkerText)
+  });
+
+  $(".navLink").mouseout(function() {
+    $(this).css("color", bgColor)
+  });
+
+  $(".navLink").click(function() {
+    $(this).css("color", darkerText)
+  });
 }
 
 /*
