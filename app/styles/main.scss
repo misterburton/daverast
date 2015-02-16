@@ -40,28 +40,38 @@ img {
   -ms-user-select: none;                 /* prevent copy paste, to allow, change 'none' to 'text' */
 }
 
-ul {
-  list-style: none;
-  padding-top: 20px;
-}
-
-ul li {
-  padding-bottom: 20px;
-}
-
-ul li a {
-  color: #AAA;
-}
-
-ul li a:hover, ul li a:active {
-  color: #EEE;
-}
-
 header {
   background-color: #000;
   color: #FFF;
   padding: 40px;
   padding-left: 0;
+}
+
+///////////////////////////////////
+/////////// DESKTOP NAV ///////////
+///////////////////////////////////
+
+
+
+///////////////////////////////////
+/////////// MOBILE MENU ///////////
+///////////////////////////////////
+
+#flyoutMenu ul {
+  list-style: none;
+  padding-top: 20px;
+}
+
+#flyoutMenu ul li {
+  padding-bottom: 20px;
+}
+
+#flyoutMenu ul li a {
+  color: #AAA;
+}
+
+#flyoutMenu ul li a:hover, ul li a:active {
+  color: #EEE;
 }
 
 #mainContentWrapper {
@@ -87,18 +97,25 @@ header {
   display: inline;
 }
 
-/* wrap each view in a .wrapper div for transition states */
+/////////////////////////////////////
+/////////// CSS FOR PAGES ///////////
+/////////////////////////////////////
+
+// wrap each view in a .wrapper div for transition states
 .wrapper {
   position: absolute;
   width: 100%;
   height: 100%;
 }
 
+// spacing between track title & soundcloud UI
+.trackList h3 {
+  margin-bottom: 20px;
+}
 
-
-/*
-/////////////// MEDIA QUERIES //
-*/
+/////////////////////////////////////
+/////////// MEDIA QUERIES ///////////
+/////////////////////////////////////
 
 /* Extra small devices (phones, up to 480px) */
 /* No media query since this is the default in Bootstrap */

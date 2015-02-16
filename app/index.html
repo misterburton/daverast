@@ -34,8 +34,9 @@
         <li><a ng-href="#/about" snap-toggle="left">About</a></li>
         <li><a ng-href="#/newPage" snap-toggle="left">New Page</a></li>
       </ul>
-    </snap-drawer>
+    </snap-drawer><!-- ./mobile flyout menu -->
 
+    <!-- main content wrapper -->
     <div snap-content id="mainContentWrapper">
 
       <snap-dragger>
@@ -48,11 +49,19 @@
           <h2>Dave Rast</h2>
           <h4>Sound Design</h4>
         </div>
+
+        <ul id="desktopNav">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">New Page</a></li>
+        </ul>
+
       </header>
 
+      <!-- div for all pages content -->
       <div ng-view="" class="page"></div>
 
-    </div><!-- ./snap-content -->
+    </div><!-- ./main content wrapper / snap-content -->
 
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
