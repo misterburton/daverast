@@ -153,6 +153,7 @@ app.animation('.page', function() {
 */
 
 function randomColors() {
+  // shouts to my colleague, @simonking — i borrowed a few of these lines from the lovely smallflock.com
   var randomRange = function(min,max) { return Math.floor(Math.random() * (max-min) + min); }
   var colorSteps = 3;
   var textColor, bgColor;
@@ -166,7 +167,7 @@ function randomColors() {
   // make sure bgColor is always the darker of the two
   var bgLum = rgbGetLum(hexToRgb(bgColor).r, hexToRgb(bgColor).g, hexToRgb(bgColor).b);
   var textLum = rgbGetLum(hexToRgb(textColor).r, hexToRgb(textColor).g, hexToRgb(textColor).b);
-  var tempTextColor;
+  var tempTextColor; // temp var to store current text color
   if (bgLum > textLum) {
     tempTextColor = textColor;
     textColor = bgColor;
@@ -226,7 +227,7 @@ function rgbGetLum(r, g, b){
   var h, s, l = (max + min) / 2;
 
   if(max == min){
-    h = s = 0; // achromatic
+    h = s = 0;
   } else {
     var d = max - min;
     s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
