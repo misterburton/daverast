@@ -16,7 +16,8 @@ var app = angular.module('daverastApp', [
   'ngSanitize',
   'ngTouch',
   'ng-fastclick',
-  'snap'
+  'snap',
+  'angular-loading-bar'
 ]);
 
 app.config(function($routeProvider) {
@@ -38,6 +39,7 @@ app.config(function($routeProvider) {
     });
 });
 
+// url white/blacklist
 app.config(function($sceDelegateProvider) {
   $sceDelegateProvider.resourceUrlWhitelist([
     // Allow same origin resource loads.
@@ -52,6 +54,11 @@ app.config(function($sceDelegateProvider) {
   ]);
 });
 
+// load bar
+app.config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
+  cfpLoadingBarProvider.includeSpinner = true;
+}]);
+
 /*
  **
  * globally available filter for trusted urls
@@ -62,6 +69,18 @@ app.filter('trustUrl', function($sce) {
   return function(url) {
     return $sce.trustAsResourceUrl(url);
   };
+});
+
+// fade in site
+app.run(function($rootScope) {
+  $rootScope.$on(
+    "cfpLoadingBar:loaded",
+    function fadeInPage() {
+      TweenMax.to($('body'), .5, {
+        autoAlpha: 1
+      })
+    }
+  );
 });
 
 /*
