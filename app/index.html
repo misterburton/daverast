@@ -45,18 +45,22 @@
       
       <header>
 
-        <div class="container">
+        <div class="container" id="titleContainer">
           <h2>Dave Rast</h2>
           <h4>Sound Design</h4>
         </div>
 
-        <ul id="desktopNav">
-          <li><a href="#">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">New Page</a></li>
-        </ul>
-
       </header>
+
+      <div id="desktopNav">
+        <div class="container" id="desktopNavContainer">
+          <ul>
+            <li><a ng-href="#/home">Home</a></li>
+            <li><a ng-href="#/about">About</a></li>
+            <li><a ng-href="#/newPage">New Page</a></li>
+          </ul>
+        </div>
+      </div>
 
       <!-- div for all pages content -->
       <div ng-view="" class="page"></div>
@@ -91,6 +95,7 @@
     <script src="bower_components/ng-fastclick/index.min.js"></script>
     <script src="bower_components/snapjs/snap.js"></script>
     <script src="bower_components/angular-snap/angular-snap.js"></script>
+    <script src="bower_components/xcolor/jquery.xcolor.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 

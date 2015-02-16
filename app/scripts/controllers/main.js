@@ -9,6 +9,8 @@
  */
 app.controller('MainCtrl', function($scope) {
 
+	randomColors();
+
   $scope.tracks = [
     {
       'name': 'Ornery Little Darlings: Blueberry Hill (Dave Ruin Remix)',

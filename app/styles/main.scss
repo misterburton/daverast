@@ -42,31 +42,71 @@ img {
 
 header {
   background-color: #000;
+}
+
+header, header * {
+  -webkit-transition: all .5s ease-out;
+     -moz-transition: all .5s ease-out;
+      -ms-transition: all .5s ease-out;
+       -o-transition: all .5s ease-out;
+          transition: all .5s ease-out;
+}
+
+#titleContainer {
   color: #FFF;
-  padding: 40px;
-  padding-left: 0;
+  padding-top: 40px;
+  padding-bottom: 30px;
+}
+
+ul {
+  list-style: none;
 }
 
 ///////////////////////////////////
 /////////// DESKTOP NAV ///////////
 ///////////////////////////////////
 
+#desktopNavContainer {
+  padding: 0;
+}
 
+#desktopNav {
+  background-color: #666;
+  padding: 9px 4px 4px 4px;
+  display: none;
+}
+
+#desktopNav ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+#desktopNav ul li {
+  display: inline;
+  margin-right: 15px;
+}
+
+#desktopNav ul li a {
+  text-decoration: none;
+}
 
 ///////////////////////////////////
 /////////// MOBILE MENU ///////////
 ///////////////////////////////////
 
 #flyoutMenu ul {
-  list-style: none;
   padding-top: 20px;
+  margin: 0;
+  padding: 0;
 }
 
 #flyoutMenu ul li {
-  padding-bottom: 20px;
+  margin-left: 20px;
+  margin-top: 20px;
 }
 
 #flyoutMenu ul li a {
+  text-decoration: none;
   color: #AAA;
 }
 
@@ -97,9 +137,9 @@ header {
   display: inline;
 }
 
-/////////////////////////////////////
-/////////// CSS FOR PAGES ///////////
-/////////////////////////////////////
+///////////////////////////////////////
+/////////// PAGES SELECTORS ///////////
+///////////////////////////////////////
 
 // wrap each view in a .wrapper div for transition states
 .wrapper {
@@ -122,10 +162,6 @@ header {
 
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) {
-
-  header {
-    padding-left: 40px;
-  }
   
   #flyoutMenu {
     display: none;
@@ -133,6 +169,18 @@ header {
 
   #toggleSnapButton {
     display: none;
+  }
+
+  #desktopNav {
+    display: block;
+  }
+
+  #desktopNav {
+    padding: 9px 4px 4px 40px;
+  }
+
+  #desktopNav ul {
+    padding-left: 0;
   }
 
 }

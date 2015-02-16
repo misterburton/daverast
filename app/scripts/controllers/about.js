@@ -8,7 +8,7 @@
  * Controller of the daverastApp
  */
 app.controller('AboutCtrl', function ($scope) {
-    
-  
+
+	randomColors();
 
 });

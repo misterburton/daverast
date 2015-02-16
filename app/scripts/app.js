@@ -113,6 +113,30 @@ app.animation('.page', function() {
 });
 
 /*
+////////////////////////////////////////////////
+//// OMG RANDOM COLORS! ////////////////////////
+////////////////////////////////////////////////
+*/
+
+function randomColors() {
+  var randomRange = function(min,max) { return Math.floor(Math.random() * (max-min) + min); }
+  var colorSteps = 3;
+  var textColor, bgColor;
+  var i = randomRange(0,2);
+  // make sure it's a readable combo
+  while ($.xcolor.distance(textColor, bgColor) < 270) {
+    bgColor = $.xcolor.random();
+    textColor = (i % 2 == 0) ? $.xcolor.darken(bgColor, colorSteps) : $.xcolor.lighten(bgColor, colorSteps);
+  }
+
+  // universal color changes
+  $("#titleContainer h2").css('color', textColor);
+  $("#titleContainer h4").css('color', textColor);
+  $("header").css('background-color', bgColor);
+  console.log('random colors! ', textColor, bgColor);
+}
+
+/*
 ///////////////////////////////////////////
 //// UTILITY STUFF ////////////////////////
 ///////////////////////////////////////////
