@@ -6,7 +6,7 @@ body {
   line-height: 140%;
 } 
 
-a, a:hover {
+a, a:hover, a:active {
   text-decoration: none;
 
 }
@@ -56,6 +56,10 @@ header, header * {
   color: #FFF;
   padding-top: 40px;
   padding-bottom: 30px;
+}
+
+#titleContainer a, #titleContainer a:hover, #titleContainer a:active {
+  text-decoration: none;
 }
 
 ul {
@@ -123,11 +127,11 @@ ul {
 #flyoutMenu ul li a {
   text-decoration: none;
   color: #AAA;
-  -webkit-transition: all .5s ease-out;
-     -moz-transition: all .5s ease-out;
-      -ms-transition: all .5s ease-out;
-       -o-transition: all .5s ease-out;
-          transition: all .5s ease-out;
+  -webkit-transition: color .5s ease-out;
+     -moz-transition: color .5s ease-out;
+      -ms-transition: color .5s ease-out;
+       -o-transition: color .5s ease-out;
+          transition: color .5s ease-out;
 }
 
 #flyoutMenu ul li a:hover, ul li a:active {
@@ -142,12 +146,17 @@ ul {
   background-color: #333;
   color: #FFF;
   display: inline;
+  -webkit-transition: background-color .5s ease-out;
+     -moz-transition: background-color .5s ease-out;
+      -ms-transition: background-color .5s ease-out;
+       -o-transition: background-color .5s ease-out;
+          transition: background-color .5s ease-out;
 }
 
 #toggleSnapButton {
   position: absolute;
-  top: 10px;
-  left: 10px;
+  top: 6px;
+  left: 6px;
   border: 0;
   background-color: #000;
   color: #EEE;

@@ -38,6 +38,20 @@ app.config(function($routeProvider) {
     });
 });
 
+app.config(function($sceDelegateProvider) {
+  $sceDelegateProvider.resourceUrlWhitelist([
+    // Allow same origin resource loads.
+    'self',
+    // Allow loading from our assets domain.  Notice the difference between * and **.
+    'http://**.soundcloud.com/'
+  ]);
+
+  // The blacklist overrides the whitelist so the open redirect here is blocked.
+  $sceDelegateProvider.resourceUrlBlacklist([
+    ''
+  ]);
+});
+
 /*
  **
  * globally available filter for trusted urls
@@ -51,8 +65,10 @@ app.filter('trustUrl', function($sce) {
 });
 
 /*
-preload all templates defined in module routes
-http://stackoverflow.com/a/21601939
+**
+* preload all templates defined in module routes
+* http://stackoverflow.com/a/21601939
+*
 */
 app.run(function($templateCache, $route, $http) {
   var url;
@@ -91,7 +107,6 @@ app.animation('.page', function() {
     leave: function(element, done) {
       TweenMax.to(element, 0.75, {
         autoAlpha: 0,
-        x: 0,
         y: 20,
         overwrite: false,
         display: 'none'
@@ -129,7 +144,21 @@ function randomColors() {
     textColor = (i % 2 == 0) ? $.xcolor.darken(bgColor, colorSteps) : $.xcolor.lighten(bgColor, colorSteps);
   }
 
-  var darkerText = $.xcolor.darken(bgColor, 4);
+  // make sure bgColor is always the darker of the two
+  var bgLum = rgbGetLum(hexToRgb(bgColor).r, hexToRgb(bgColor).g, hexToRgb(bgColor).b);
+  var textLum = rgbGetLum(hexToRgb(textColor).r, hexToRgb(textColor).g, hexToRgb(textColor).b);
+  var tempTextColor;
+  if (bgLum > textLum) {
+    tempTextColor = textColor;
+    textColor = bgColor;
+    bgColor = tempTextColor;
+  }
+
+  // kick up contrast between light & dark
+  textColor = $.xcolor.lighten(textColor, 2);
+
+  // rollover color
+  var darkerText = $.xcolor.darken(bgColor, 3);
 
   // header
   $("#titleContainer h2").css('color', textColor);
@@ -162,6 +191,36 @@ function randomColors() {
   $(".navLink").click(function() {
     $(this).css("color", darkerText)
   });
+}
+
+function hexToRgb(hex) {
+  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  return result ? {
+    r: parseInt(result[1], 16),
+    g: parseInt(result[2], 16),
+    b: parseInt(result[3], 16)
+  } : null;
+}
+
+function rgbGetLum(r, g, b){
+  r /= 255, g /= 255, b /= 255;
+  var max = Math.max(r, g, b), min = Math.min(r, g, b);
+  var h, s, l = (max + min) / 2;
+
+  if(max == min){
+    h = s = 0; // achromatic
+  } else {
+    var d = max - min;
+    s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+    switch(max){
+      case r: h = (g - b) / d + (g < b ? 6 : 0); break;
+      case g: h = (b - r) / d + 2; break;
+      case b: h = (r - g) / d + 4; break;
+    }
+    h /= 6;
+  }
+
+  return l;
 }
 
 /*
