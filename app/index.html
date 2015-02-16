@@ -44,6 +44,7 @@
         <button snap-toggle="left" id="toggleSnapButton">&#9776;</button>
       </snap-dragger>
       
+      <!-- header & title -->
       <header>
 
         <div class="container" id="titleContainer">
@@ -53,8 +54,9 @@
           </a>
         </div>
 
-      </header>
+      </header><!-- ./header & title -->
 
+      <!-- horizontal desktop nav -->
       <div id="desktopNav">
         <div class="container" id="desktopNavContainer">
           <ul>
@@ -63,9 +65,9 @@
             <li><a class="navLink" ng-href="#/newPage">New Page</a></li>
           </ul>
         </div>
-      </div>
+      </div><!-- ./horizontal desktop nav -->
 
-      <!-- div for all pages content -->
+      <!-- div w/in which all page content is loaded -->
       <div ng-view="" class="page"></div>
 
     </div><!-- ./main content wrapper / snap-content -->
