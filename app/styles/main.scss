@@ -105,7 +105,7 @@ ul {
 
 #desktopNav ul li {
   display: inline;
-  margin-right: 15px;
+  padding-right: 15px;
 }
 
 #desktopNav ul li a {
@@ -196,8 +196,15 @@ ul {
 }
 
 // spacing between track title & soundcloud UI
-.trackList h3 {
+.track h3 {
   margin-bottom: 20px;
+}
+
+.divider {
+  height: 1px;
+  background-color: #EEE;
+  margin-top: 20px;
+  margin-bottom: 30px;
 }
 
 /////////////////////////////////////
@@ -227,7 +234,7 @@ ul {
   }
 
   #desktopNav ul {
-    padding-left: 0;
+    // padding-left: 0;
   }
 
 }
@@ -235,7 +242,9 @@ ul {
 /* Medium devices (desktops, 992px and up) */
 @media (min-width: 992px) { 
 
-
+  #desktopNav ul {
+    margin-left: -7px;
+  }
 
 }
 

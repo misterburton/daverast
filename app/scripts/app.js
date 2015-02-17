@@ -39,13 +39,25 @@ app.config(function($routeProvider) {
     });
 });
 
+/*
+ **
+ * globally available filter for trusted urls
+ * usage: ng-src="{{ track.url | trustUrl }}"
+ *
+ */
+app.filter('trustUrl', function($sce) {
+  return function(url) {
+    return $sce.trustAsResourceUrl(url);
+  };
+});
+
 // url white/blacklist
 app.config(function($sceDelegateProvider) {
   $sceDelegateProvider.resourceUrlWhitelist([
     // Allow same origin resource loads.
     'self',
     // Allow loading from our assets domain.  Notice the difference between * and **.
-    'http://**.soundcloud.com/'
+    'https://eventlogger.soundcloud.com/*'
   ]);
 
   // The blacklist overrides the whitelist so the open redirect here is blocked.
@@ -72,23 +84,11 @@ app.run(function($rootScope) {
 });
 
 /*
- **
- * globally available filter for trusted urls
- * usage: ng-src="{{ track.url | trustUrl }}"
+**
+ * preload all templates defined in module routes
+ * http://stackoverflow.com/a/21601939
  *
  */
-app.filter('trustUrl', function($sce) {
-  return function(url) {
-    return $sce.trustAsResourceUrl(url);
-  };
-});
-
-/*
-**
-* preload all templates defined in module routes
-* http://stackoverflow.com/a/21601939
-*
-*/
 app.run(function($templateCache, $route, $http) {
   var url;
   for (var i in $route.routes) {
@@ -100,16 +100,22 @@ app.run(function($templateCache, $route, $http) {
   }
 });
 
-// https://docs.angularjs.org/api/ngAnimate
+/*
+///////////////////////////////////////////////////////////////
+//// GLOBAL PAGE TRANSITION ANIMATIONS ////////////////////////
+//// https://docs.angularjs.org/api/ngAnimate /////////////////
+///////////////////////////////////////////////////////////////
+*/
 app.animation('.page', function() {
   return {
     enter: function(element, done) {
-      //run the animation here and call done when the animation is complete
+      // set page 20 px south in alpha 0
       TweenMax.to(element, 0, {
         autoAlpha: 0,
         y: 20,
         overwrite: false
       });
+      // fade in & bring to y:0
       TweenMax.to(element, 0.5, {
         autoAlpha: 1,
         y: 0,
