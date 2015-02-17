@@ -17,7 +17,8 @@ var app = angular.module('daverastApp', [
   'ngTouch',
   'ng-fastclick',
   'snap',
-  'angular-loading-bar'
+  'angular-loading-bar',
+  'Tabletop'
 ]);
 
 app.config(function($routeProvider) {
@@ -65,6 +66,23 @@ app.config(function($sceDelegateProvider) {
     ''
   ]);
 });
+
+// https://github.com/times/angular-tabletop/
+// app.config(function($urlRouterProvider, TabletopProvider) {
+//   console.log('setup tabletop');
+//   TabletopProvider.setTabletopOptions({
+//     key: 'https://docs.google.com/spreadsheets/d/1FLnqeYC351WaYsWWxEL59aPSUXyd3VR_Q_URMLg5Jgk/edit#gid=0', // Your key here.
+//     simpleSheet: true // Any Tabletop option except 'callback' works. 
+//   })
+// });
+
+// tabletop config
+// app.config(function($stateProvider, $urlRouterProvider, TabletopProvider) {
+//   // Tabletop setup...
+//   TabletopProvider.setTabletopOptions({
+//     key: 'https://docs.google.com/spreadsheets/d/1FLnqeYC351WaYsWWxEL59aPSUXyd3VR_Q_URMLg5Jgk/pubhtml',
+//   });
+// });
 
 // load bar
 app.config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {

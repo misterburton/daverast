@@ -28,28 +28,30 @@ app.controller('MainCtrl', function($scope) {
     }
   ];
 
-  TweenMax.delayedCall(.5, fillUrlValues);
-
-  function fillUrlValues() {
-    // $scope.tracks[0].url = 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/45982501&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true';
-    // $scope.tracks = $scope.tracks;
-
-    // $('.frame').attr('src', 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/45982501&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true')
-  }
-
-  // $('#trackList').css('display', 'none');
-
 });
 
 // dynamically set iframe 'src' attributes when .track elemtns are added w/ a 1s delay
 app.directive('trackElement', ['$timeout', function(timer) {
   return {
     link: function($scope, $elem, $attrs, $index) {
+
       var setIFrameSource = function() {
-        var frame = $elem.find('.frame');
-        frame.attr('src', $scope.tracks[$attrs.id].url);
+        // make iframe element invisible
+        var trackIFrame = $elem.find('.frame');
+        
+        // fire fade in callback when iframe is loaded
+        trackIFrame.ready(function() {
+          trackIFrame.css('opacity', 0);
+          TweenMax.to(trackIFrame, .25, {autoAlpha:1});
+        });
+
+        // set iframe `src` attritube via $scope.tracks array
+        trackIFrame.attr('src', $scope.tracks[$attrs.id].url);
       }
-      timer(setIFrameSource, 666); // this works even with a delay of 0s / i.e. when added to DOM
+
+      // wait for page transition before setting iframe `src` attributes
+      // this works even with a delay of 0s / i.e. when added to DOM
+      timer(setIFrameSource, 666);
     }
   }
 }]);

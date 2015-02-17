@@ -35,6 +35,8 @@ module.exports = function(config) {
       'bower_components/angular-snap/angular-snap.js',
       'bower_components/xcolor/jquery.xcolor.js',
       'bower_components/angular-loading-bar/build/loading-bar.js',
+      'bower_components/tabletop/src/tabletop.js',
+      'bower_components/angular-tabletop/TabletopProvider.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',
