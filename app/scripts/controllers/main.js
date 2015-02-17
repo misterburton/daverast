@@ -7,30 +7,35 @@
  * # MainCtrl
  * Controller of the daverastApp
  */
-app.controller('MainCtrl', function($scope) {
+app.controller('MainCtrl', function($scope, tabletopData) {
+
+  $scope.data = tabletopData;
+  $scope.tracks = $scope.data[0].Tracks.elements;
+
+  console.log('data: ', $scope.data[0].Tracks.elements);
 
   // fire random colors funciton from app.js
   randomColors();
   
   // instantiate tracks var - we'll fill this in a sec
-  $scope.tracks = [
-    {
-      'name': 'Ornery Little Darlings: Blueberry Hill (Dave Ruin Remix)',
-      'url': 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/45982501&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true',
-      'width': '100%',
-      'height': '300'
-    },
-    {
-      'name': 'The Purist Ft Mick Jenkins - Touch Me',
-      'url': 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/189092844&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true',
-      'width': '100%',
-      'height': '300'
-    }
-  ];
+  // $scope.tracks = [
+  //   {
+  //     'name': 'Ornery Little Darlings: Blueberry Hill (Dave Ruin Remix)',
+  //     'url': 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/45982501&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true',
+  //     'width': '100%',
+  //     'height': '300'
+  //   },
+  //   {
+  //     'name': 'The Purist Ft Mick Jenkins - Touch Me',
+  //     'url': 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/189092844&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true',
+  //     'width': '100%',
+  //     'height': '300'
+  //   }
+  // ];
 
 });
 
-// dynamically set iframe 'src' attributes when .track elemtns are added w/ a 1s delay
+// dynamically set iframe 'src' attributes when .track elements are added w/ a 1s delay
 app.directive('trackElement', ['$timeout', function(timer) {
   return {
     link: function($scope, $elem, $attrs, $index) {

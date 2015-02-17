@@ -18,18 +18,30 @@ var app = angular.module('daverastApp', [
   'ng-fastclick',
   'snap',
   'angular-loading-bar',
-  'Tabletop'
+  'Tabletop',
+  'ui.router'
 ]);
 
-app.config(function($routeProvider) {
+app.config(function($routeProvider, TabletopProvider) {
+  // tabletop setup...
+  TabletopProvider.setTabletopOptions({
+    key: '1FLnqeYC351WaYsWWxEL59aPSUXyd3VR_Q_URMLg5Jgk',
+  });
+
   $routeProvider
     .when('/', {
       templateUrl: 'views/main.html',
-      controller: 'MainCtrl'
+      controller: 'MainCtrl',
+      resolve: {
+        tabletopData: 'Tabletop'
+      }
     })
     .when('/about', {
       templateUrl: 'views/about.html',
-      controller: 'AboutCtrl'
+      controller: 'AboutCtrl',
+      resolve: {
+        tabletopData: 'Tabletop'
+      }
     })
     .when('/newPage', {
       templateUrl: 'views/newpage.html',
@@ -66,23 +78,6 @@ app.config(function($sceDelegateProvider) {
     ''
   ]);
 });
-
-// https://github.com/times/angular-tabletop/
-// app.config(function($urlRouterProvider, TabletopProvider) {
-//   console.log('setup tabletop');
-//   TabletopProvider.setTabletopOptions({
-//     key: 'https://docs.google.com/spreadsheets/d/1FLnqeYC351WaYsWWxEL59aPSUXyd3VR_Q_URMLg5Jgk/edit#gid=0', // Your key here.
-//     simpleSheet: true // Any Tabletop option except 'callback' works. 
-//   })
-// });
-
-// tabletop config
-// app.config(function($stateProvider, $urlRouterProvider, TabletopProvider) {
-//   // Tabletop setup...
-//   TabletopProvider.setTabletopOptions({
-//     key: 'https://docs.google.com/spreadsheets/d/1FLnqeYC351WaYsWWxEL59aPSUXyd3VR_Q_URMLg5Jgk/pubhtml',
-//   });
-// });
 
 // load bar
 app.config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
