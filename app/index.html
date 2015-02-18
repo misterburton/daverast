@@ -63,9 +63,9 @@
         <div class="container" id="desktopNavContainer">
           <div class="col-xs-12 col-md-8 col-md-offset-2">
             <ul>
-              <li><a class="navLink" ng-href="#/">Home</a></li>
-              <li><a class="navLink" ng-href="#/about">About</a></li>
-              <li><a class="navLink" ng-href="#/newPage">New Page</a></li>
+              <li><a class="navLink" ng-click="{{clearFrames()}}" ng-href="#/">Home</a></li>
+              <li><a class="navLink" id="aboutButton" ng-click="{{clearFrames()}}" ng-href="#/about">About</a></li>
+              <li><a class="navLink" ng-click="{{clearFrames()}}" ng-href="#/newPage">New Page</a></li>
             </ul>
           </div>
         </div>
@@ -73,14 +73,6 @@
 
       <!-- div w/in which all page content is loaded -->
       <div ng-view="" class="page"></div>
-
-      <!-- 
-      <footer>
-        <div class="container">
-          All Content &copy; 2015 Dave Rast
-        </div>
-      </footer>
-       -->
 
     </div><!-- ./main content wrapper / snap-content -->
 
@@ -117,6 +109,7 @@
     <script src="bower_components/tabletop/src/tabletop.js"></script>
     <script src="bower_components/angular-tabletop/TabletopProvider.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/angular-sticky-footer/angular-sticky-footer.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 

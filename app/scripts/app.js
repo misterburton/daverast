@@ -64,21 +64,6 @@ app.filter('trustUrl', function($sce) {
   };
 });
 
-// url white/blacklist
-app.config(function($sceDelegateProvider) {
-  $sceDelegateProvider.resourceUrlWhitelist([
-    // Allow same origin resource loads.
-    'self',
-    // Allow loading from our assets domain.  Notice the difference between * and **.
-    'https://eventlogger.soundcloud.com/*'
-  ]);
-
-  // The blacklist overrides the whitelist so the open redirect here is blocked.
-  $sceDelegateProvider.resourceUrlBlacklist([
-    ''
-  ]);
-});
-
 // load bar
 app.config(['cfpLoadingBarProvider', function(cfpLoadingBarProvider) {
   cfpLoadingBarProvider.includeSpinner = true;
@@ -164,6 +149,13 @@ app.animation('.page', function() {
     removeClass: function(element, className, done) {}
   };
 });
+
+// remove all iFrames on ng-click
+function clearFrames(el) {
+  console.log('clear frames');
+  var frame = el.find('.frame');
+  frame.contents().find("body").html('');
+}
 
 /*
 ////////////////////////////////////////////////
