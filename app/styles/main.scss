@@ -49,6 +49,11 @@ img {
   right: 10px;
 }
 
+.container {
+  padding-left: 0;
+  padding-right: 0;
+}
+
 //////////////////////////////////////
 /////////// TITLE & HEADER ///////////
 //////////////////////////////////////
@@ -177,6 +182,7 @@ ul {
   font-weight: normal;
   border-radius: 4px;
   display: inline;
+  font-size: 20px;
   -webkit-transition: all .5s ease-out;
      -moz-transition: all .5s ease-out;
       -ms-transition: all .5s ease-out;
@@ -216,6 +222,11 @@ ul {
 
 /* Small devices (tablets, 768px and up) */
 @media (min-width: 768px) {
+
+  .container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
   
   #flyoutMenu {
     display: none;
