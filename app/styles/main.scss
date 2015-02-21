@@ -45,10 +45,19 @@ img {
   -ms-user-select: none;                 /* prevent copy paste, to allow, change 'none' to 'text' */
 }
 
+ul {
+  list-style: none;
+}
+
 #loading-bar-spinner {
   right: 10px;
 }
 
+p {
+  line-height: 150%
+}
+
+// the copy needs to breathe, bootstrap!
 .container {
   padding-left: 0;
   padding-right: 0;
@@ -80,8 +89,12 @@ header, header * {
   text-decoration: none;
 }
 
-ul {
-  list-style: none;
+#siteTitle {
+  opacity: 0;
+}
+
+#siteSubtitle {
+  opacity: 0;
 }
 
 ///////////////////////////////////
@@ -125,6 +138,11 @@ ul {
 
 #desktopNav ul li a:hover, #desktopNav ul li a:active, #desktopNav ul li a:visited {
   color: #EEE;
+}
+
+#desktopNavList {
+  opacity: 0;
+  margin-top: 3px;
 }
 
 ///////////////////////////////////
@@ -206,11 +224,22 @@ ul {
   margin-bottom: 20px;
 }
 
+// spacing below description
+.track p {
+  margin-top: 10px;
+  margin-bottom: 16px;
+}
+
 .divider {
   height: 1px;
   background-color: #EEE;
   margin-top: 20px;
   margin-bottom: 30px;
+}
+
+.footerCopy {
+  padding: 40px 0 20px 15px;
+  font-size: 14px;
 }
 
 /////////////////////////////////////

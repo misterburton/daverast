@@ -9,28 +9,20 @@
  */
 app.controller('AboutCtrl', function($scope, tabletopData) {
 
-  randomColors();
-
   $scope.data = tabletopData;
   $scope.tracks = $scope.data[0].J4F.elements;
 
+  // store path to website copy
+  var copy = $scope.data[0].WebsiteCopy.elements[0];
+  // set copy vars for the view
+  $scope.aboutHeadline = copy.aboutHeadline;
+  $scope.aboutCopy = copy.aboutCopy;
+
   // console.log('data: ', $scope.data[0].Tracks.elements);
 
-  // instantiate tracks var - we'll fill this in a sec
-  // $scope.tracks = [
-  //   {
-  //     'name': 'Ornery Little Darlings: Blueberry Hill (Dave Ruin Remix)',
-  //     'url': 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/45982501&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true',
-  //     'width': '100%',
-  //     'height': '300'
-  //   },
-  //   {
-  //     'name': 'The Purist Ft Mick Jenkins - Touch Me',
-  //     'url': 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/189092844&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;visual=true',
-  //     'width': '100%',
-  //     'height': '300'
-  //   }
-  // ];
+  // fire random colors & init header funcitons from app.js
+  randomColors();
+  initHeader(copy);
 
 });
 

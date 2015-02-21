@@ -30,7 +30,7 @@
 
     <!-- mobile flyout menu -->
     <snap-drawer id="flyoutMenu">
-      <ul>
+      <ul class="greyText">
         <li><a class="navLink" ng-href="#/" snap-toggle="left">Home</a></li>
         <li><a class="navLink" ng-href="#/about" snap-toggle="left">About</a></li>
         <li><a class="navLink" ng-href="#/newPage" snap-toggle="left">New Page</a></li>
@@ -50,8 +50,8 @@
         <div class="container" id="titleContainer">
           <div class="col-xs-12 col-md-8 col-md-offset-2">
             <a ng-href="#/">
-              <h2>Dave Rast</h2>
-              <h4>Sound Design</h4>
+              <h2 id="siteTitle">Dave Rast</h2>
+              <h4 id="siteSubtitle">Sound Design</h4>
             </a>
           </div>
         </div>
@@ -62,7 +62,7 @@
       <div id="desktopNav">
         <div class="container" id="desktopNavContainer">
           <div class="col-xs-12 col-md-8 col-md-offset-2">
-            <ul>
+            <ul id="desktopNavList">
               <li><a class="navLink" ng-click="{{clearFrames()}}" ng-href="#/">Home</a></li>
               <li><a class="navLink" id="aboutButton" ng-click="{{clearFrames()}}" ng-href="#/about">About</a></li>
               <li><a class="navLink" ng-click="{{clearFrames()}}" ng-href="#/newPage">New Page</a></li>
@@ -109,7 +109,6 @@
     <script src="bower_components/tabletop/src/tabletop.js"></script>
     <script src="bower_components/angular-tabletop/TabletopProvider.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-    <script src="bower_components/angular-sticky-footer/angular-sticky-footer.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 

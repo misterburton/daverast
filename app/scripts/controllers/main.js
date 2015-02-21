@@ -9,16 +9,23 @@
  */
 app.controller('MainCtrl', function($scope, tabletopData) {
 
-  // fire random colors funciton from app.js
-  randomColors();
-
   $scope.data = tabletopData;
   $scope.tracks = $scope.data[0].Tracks.elements;
 
+  // store path to website copy
+  var copy = $scope.data[0].WebsiteCopy.elements[0];
+  // set copy vars for the view
+  $scope.homeHeadline = copy.homeHeadline;
+  $scope.homeCopy = copy.homeCopy;
+
   // when leaving this view …
   $scope.$on('$locationChangeStart', function(event) {
-    // set iFrame sources to ''
+    // do stuff on transition out
   });
+
+  // fire random colors & init header funcitons from app.js
+  randomColors();
+  initHeader(copy);
 
 });
 
@@ -48,7 +55,7 @@ app.directive('trackElement', ['$timeout', function(timer) {
   }
 }]);
 
-// JSON format, for reference
+// JSON format from google spreadsheet — $scope.data[0].Tracks.elements — for reference
 // $scope.tracks = [
 //   {
 //     'name': 'Ornery Little Darlings: Blueberry Hill (Dave Ruin Remix)',

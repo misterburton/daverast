@@ -99,11 +99,14 @@ app.run(function($templateCache, $route, $http) {
 });
 
 /*
-///////////////////////////////////////////////////////////////
-//// GLOBAL PAGE TRANSITION ANIMATIONS ////////////////////////
-//// https://docs.angularjs.org/api/ngAnimate /////////////////
-///////////////////////////////////////////////////////////////
-*/
+ **
+ * globally page transition animations
+ * https://docs.angularjs.org/api/ngAnimate
+ *
+ * for more fine-tuned, per-view animation on leave, use:
+ * $scope.$on('$locationChangeStart'…
+ *
+ */
 app.animation('.page', function() {
   return {
     enter: function(element, done) {
@@ -150,16 +153,43 @@ app.animation('.page', function() {
   };
 });
 
-// remove all iFrames on ng-click
-function clearFrames(el) {
-  console.log('clear frames');
-  var frame = el.find('.frame');
-  frame.contents().find("body").html('');
+/*
+**
+ * dynamic text in header, called from views
+ *
+ */
+function initHeader(copy) {
+  // set & fade in titles & nav on first run
+  var st = $('#siteTitle');
+  var sst = $('#siteSubtitle')
+  st.text(copy.siteTitle);
+  sst.text(copy.siteSubtitle);
+  TweenMax.to(st, .5, {opacity:1});
+  TweenMax.to(sst, .5, {opacity:1});
+  TweenMax.to($('#desktopNavList'), .5, {opacity:1});
 }
 
 /*
+**
+ * fix spotify's broke-arse embed code
+ *
+ */
+function spotifyWidthFix(){
+  $('iframe[src*="embed.spotify.com"]').each(function() {
+    $(this).css('width',$(this).parent(1).css('width'));
+    $(this).attr('src',$(this).attr('src'));
+  });
+}
+
+$(window).resize(function() {
+  spotifyWidthFix();
+});
+
+spotifyWidthFix();
+
+/*
 ////////////////////////////////////////////////
-//// OMG RANDOM COLORS! ////////////////////////
+//// OMG RANDOM COLOR FUNCTIONS ////////////////
 ////////////////////////////////////////////////
 */
 
