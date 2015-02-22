@@ -1,3 +1,8 @@
+html, body {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
 body {
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
   font-weight: 300;
@@ -53,7 +58,7 @@ ul {
   right: 10px;
 }
 
-p {
+.wrapper h3, p {
   line-height: 150%
 }
 
@@ -217,10 +222,11 @@ header, header * {
   position: absolute;
   width: 100%;
   height: 100%;
+  margin-top: 20px;
 }
 
 // spacing between track title & soundcloud UI
-.track h3 {
+.track h3, .track h4 {
   margin-bottom: 20px;
 }
 

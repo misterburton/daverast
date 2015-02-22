@@ -36,16 +36,19 @@ app.config(function($routeProvider, TabletopProvider) {
         tabletopData: 'Tabletop'
       }
     })
-    .when('/about', {
-      templateUrl: 'views/about.html',
-      controller: 'AboutCtrl',
+    .when('/work', {
+      templateUrl: 'views/work.html',
+      controller: 'WorkCtrl',
       resolve: {
         tabletopData: 'Tabletop'
       }
     })
-    .when('/newPage', {
-      templateUrl: 'views/newpage.html',
-      controller: 'NewpageCtrl'
+    .when('/play', {
+      templateUrl: 'views/play.html',
+      controller: 'PlayCtrl',
+      resolve: {
+        tabletopData: 'Tabletop'
+      }
     })
     .otherwise({
       redirectTo: '/'

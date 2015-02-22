@@ -2,21 +2,21 @@
 
 /**
  * @ngdoc function
- * @name daverastApp.controller:AboutCtrl
+ * @name daverastApp.controller:PlayCtrl
  * @description
- * # AboutCtrl
+ * # PlayCtrl
  * Controller of the daverastApp
  */
-app.controller('AboutCtrl', function($scope, tabletopData) {
+app.controller('PlayCtrl', function($scope, tabletopData) {
 
   $scope.data = tabletopData;
-  $scope.tracks = $scope.data[0].J4F.elements;
+  $scope.tracks = $scope.data[0].Play.elements;
 
   // store path to website copy
   var copy = $scope.data[0].WebsiteCopy.elements[0];
   // set copy vars for the view
-  $scope.aboutHeadline = copy.aboutHeadline;
-  $scope.aboutCopy = copy.aboutCopy;
+  $scope.playHeadline = copy.playHeadline;
+  $scope.playCopy = copy.playCopy;
 
   // console.log('data: ', $scope.data[0].Tracks.elements);
 
