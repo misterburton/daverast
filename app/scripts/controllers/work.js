@@ -29,8 +29,8 @@
 
  });
 
- // dynamically set iframe 'src' attributes when .track elements are added w/ a 1s delay
- app.directive('trackElement', ['$timeout', function(timer) {
+ // dynamically set iframe 'src' attributes when .track elements are added w/ a delay
+ app.directive('workTracks', ['$timeout', function(timer) {
    return {
      link: function($scope, $elem, $attrs, $index) {
 

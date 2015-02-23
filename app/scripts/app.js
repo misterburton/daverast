@@ -126,20 +126,19 @@ app.animation('.page', function() {
         delay: .25,
         overwrite: false
       });
-
-      return function(cancelled) {
-        //this (optional) function will be called when the animation
-        //completes or when the animation is cancelled (the cancelled
-        //flag will be set to true if cancelled).
-      };
     },
     leave: function(element, done) {
       TweenMax.to(element, 0.75, {
         autoAlpha: 0,
         y: 20,
         overwrite: false,
-        display: 'none'
+        display: 'none',
+        onComplete: removeElement
       });
+      function removeElement() {
+        element.remove();
+        element = null;
+      }
     },
     move: function(element, done) {},
     //animation that can be triggered before the class is added

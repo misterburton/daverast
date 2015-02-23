@@ -1,4 +1,4 @@
-<div class="wrapper">
+<div class="wrapper" wrapper-directive>
   
   <div class="container">
 
@@ -13,11 +13,11 @@
       <h2>Featured Work</h2>
 
       <!-- use 'track' class for CSS spacing -->
-      <div class="track">
+      <div class="track" featured-track>
         
         <h4>{{homeVars.featuredWork}}</h4>
 
-        <iframe class="frame" style="background-color:#f5f5f5; border:1px solid #e5e5e5;" width="{{homeVars.width}}" height="{{homeVars.height}}" scrolling="no" frameborder="no" ng-src="{{homeVars.url | trustUrl}}"></iframe>
+        <iframe class="frame" style="background-color:#f5f5f5; border:1px solid #e5e5e5;" width="{{homeVars.width}}" height="{{homeVars.height}}" scrolling="no" frameborder="no" ng-src=""></iframe>
 
         <p ng-bind-html="homeVars.description"></p>
 
