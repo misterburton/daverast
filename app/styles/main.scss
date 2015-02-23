@@ -45,9 +45,9 @@ img {
   -webkit-touch-callout: none;              /* prevent callout to copy image, etc when tap to hold */
   -moz-touch-callout: none;
   touch-callout: none;
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;                 /* prevent copy paste, to allow, change 'none' to 'text' */
+  // -moz-user-select: none;
+  // -webkit-user-select: none;
+  // -ms-user-select: none;                 /* prevent copy paste, to allow, change 'none' to 'text' */
 }
 
 ul {
