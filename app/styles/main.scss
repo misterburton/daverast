@@ -73,7 +73,18 @@ ul {
 //////////////////////////////////////
 
 header {
+  background-image: url(../images/headerFPO.jpg);
+  -webkit-background-size: cover;
+     -moz-background-size: cover;
+      -ms-background-size: cover;
+       -o-background-size: cover;
+          background-size: cover;
   background-color: #000;
+  -webkit-background-blend-mode: multiply;
+     -moz-background-blend-mode: multiply;
+      -ms-background-blend-mode: multiply;
+       -o-background-blend-mode: multiply;
+          background-blend-mode: multiply;
 }
 
 header, header * {

@@ -189,6 +189,14 @@ $(window).resize(function() {
 
 spotifyWidthFix();
 
+// make sure page has loaded, otherwise … reeeeeeeeewind!!!
+TweenMax.delayedCall(1, loadedCheck);
+function loadedCheck() {
+  if ($('body').find('.page') == []) {
+    window.location.reload();
+  }
+}
+
 /*
 ////////////////////////////////////////////////
 //// OMG RANDOM COLOR FUNCTIONS ////////////////
@@ -221,38 +229,40 @@ function randomColors() {
   textColor = $.xcolor.lighten(textColor, 2);
 
   // rollover color
-  var darkerText = $.xcolor.darken(bgColor, 1);
+  var darkerText = $.xcolor.darken(textColor, 1);
+  var darkerBackground = $.xcolor.darken(bgColor, 2);
 
   // header
   $("#titleContainer h2").css('color', textColor);
   $("#titleContainer h4").css('color', textColor);
   $("header").css('background-color', bgColor);
   // hamburger menu
-  $("#toggleSnapButton").css('background-color', bgColor);
+  $("#toggleSnapButton").css('background-color', darkerBackground);
   $("#toggleSnapButton").css('color', textColor);
   // desktop nav
-  $("#desktopNavContainer li a").css('color', bgColor);
+  $("#desktopNavContainer li a").css('color', darkerBackground);
   $("#desktopNav").css('background-color', textColor);
-  // flyout menu
-  $("#flyoutMenu li a").css('color', bgColor);
-  $("#flyoutMenu li a:hover").css('color', darkerText);
-  $("#flyoutMenu li a:active").css('color', darkerText);
-  $("#flyoutMenu li a:visited").css('color', darkerText);
-  $("#flyoutMenu").css('background-color', textColor);
   // global page links
   $("a").css('color', bgColor);
+  // flyout menu
+  $("#flyoutMenu ul li").css('color', textColor);
+  $("#flyoutMenu ul li a").css('color', textColor);
+  $("#flyoutMenu ul li a:hover").css('color', darkerText);
+  $("#flyoutMenu ul li a:active").css('color', darkerText);
+  $("#flyoutMenu ul li a:visited").css('color', darkerText);
+  $("#flyoutMenu").css('background-color', bgColor);
 
-  $(".navLink, a").mouseover(function() {
-    $(this).css("color", darkerText)
-  });
+  // $(".navLink, a").mouseover(function() {
+  //   $(this).css("color", darkerBackground)
+  // });
 
-  $(".navLink, a").mouseout(function() {
-    $(this).css("color", bgColor)
-  });
+  // $(".navLink, a").mouseout(function() {
+  //   $(this).css("color", bgColor)
+  // });
 
-  $(".navLink, a").click(function() {
-    $(this).css("color", darkerText)
-  });
+  // $(".navLink, a").click(function() {
+  //   $(this).css("color", darkerBackground)
+  // });
 }
 
 function hexToRgb(hex) {
